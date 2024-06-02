@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiggy</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <style>
+        .form-container {
+            border: 1px solid #ccc;
+        }
+
+        #advertisementForm {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #advertisementTitle {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #advertisementImageInput {
+            padding: 8px;
+        }
+
+        #advertisementSubmit {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #advertisementSubmit:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <section class="header-logo">
+            <i class="fa-solid fa-piggy-bank"></i>
+            Spiggy
+        </section>
+        <section class="header-right">
+            <section class="header-right-time">
+                <i style="margin-right: 5px;" class="fa-solid fa-calendar-days"></i>
+                <span id="header-date"></span>
+            </section>
+            <section class="header-right-account">
+                <i style="margin-right: 5px;" class="fa-solid fa-user"></i>
+                <div class="dropdown">
+                    <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Admin
+                    </span>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa-solid fa-gear"></i>
+                                Cài đặt
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item" href="./signin.html">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </header>
+
+    <main class="content">
+        <div class="row">
+            <div class="col-3">
+                <ul class="list-group">
+                    <li data-num="1" class="list-group-item list-item-control active">Thống kê theo ngân sách</li>
+                    <li data-num="2" class="list-group-item list-item-control">Thống kê theo mục tiêu</li>
+                    <li data-num="3" class="list-group-item list-item-control">Tạo quảng cáo</li>
+                </ul>
+            </div>
+            <div class="col-9">
+                <section data-num="1" class="content-item content-item-active">
+                    <canvas id="chart1" style="width:100%;"></canvas>
+                </section>
+                <section data-num="2" class="content-item">
+                    <canvas id="chart2" style="width:100%;"></canvas>
+                </section>
+                <section data-num="3" class="content-item">
+                    <div id="advertisementForm" class="form-container">
+                        <h1 style="text-align: center;" id="advertisementTitle" class="title">Tạo quảng cáo</h1>
+                        <form id="advertisementForm" class="form">
+                            <div class="form-group">
+                                <label for="advertisementTitleInput" class="form-label">Tiêu đề:</label>
+                                <input type="text" id="advertisementTitleInputVal" name="advertisementTitleInput"
+                                    class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="advertisementDescriptionInput" class="form-label">Mô tả:</label>
+                                <textarea id="advertisementDescriptionInputVal" name="advertisementDescriptionInput"
+                                    class="form-input" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="advertisementImageInput" class="form-label">Chọn ảnh:</label>
+                                <input type="file" id="advertisementImageInputVal" name="advertisementImageInputVal"
+                                    class="form-input" multiple required>
+                                <small class="form-text">Chọn nhiều ảnh bằng cách giữ phím Ctrl khi click chuột</small>
+                            </div>
+                            <button type="submit" id="advertisementSubmit" class="btn btn-submit">Tạo quảng cáo</button>
+                        </form>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //Chart 1
+            var xValues = [
+                "Tiết kiệm",
+                "Học phí",
+                "Gửi về nhà",
+                "Giải trí",
+                "Gym",
+                "Ăn uống",
+                "Hát hò",
+                "Du lịch",
+                "Mua sắm",
+                "Thể thao",
+                "Xem phim",
+                "Học tập",
+                "Yoga",
+                "Trò chơi điện tử",
+                "Điện thoại di động",
+                "Mua sách",
+                "Chụp ảnh",
+                "Tập nhảy",
+                "Đi bơi",
+            ];
+
+            let n = xValues.length;
+            var yValues = [];
+            var barColors = [];
+            for (let i = 0; i < xValues.length; i++) {
+                yValues.push(Math.floor(Math.random() * 10000000) + 1);
+                barColors.push(`rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}`);
+            }
+
+            new Chart("chart1", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "Ngân sách của người dùng",
+                        fontSize: 24
+                    }
+                }
+            });
+
+            //Chart 2
+            var xValues2 = [
+                "Mua chung cư",
+                "Mở quán bún",
+                "Đi nước ngoài",
+                "Mua xe máy",
+                "Mua nhà",
+                "Mua ô tô",
+                "Làm nhà",
+                "Mua xe đạp điện",
+                "Mở quán cắt tóc",
+                "Mua đất",
+            ];
+            var yValues2 = [];
+            var barColors2 = [];
+            for (let i = 0; i < xValues2.length; i++) {
+                yValues2.push(Math.floor(Math.random() * 100000000) + 1); // Dữ liệu thực tế, lấy ngẫu nhiên từ 1 đến 100
+                barColors2.push(`rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}`); // Màu sắc ngẫu nhiên cho thanh cột
+            }
+
+            new Chart("chart2", {
+                type: "bar",
+                data: {
+                    labels: xValues2,
+                    datasets: [{
+                        backgroundColor: barColors2,
+                        data: yValues2
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "Mục tiêu của người dùng",
+                        fontSize: 24
+                    }
+                }
+            });
+
+            let date = new Date();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            }
+            let year = date.getFullYear();
+            $("#header-date").html(`${day}/${month}/${year}`);
+
+            $(".list-item-control").click(function () {
+                const listItemControl = $(".list-item-control");
+                listItemControl.removeClass("active");
+                $(this).addClass("active");
+
+                const contentItem = $(".content-item");
+                contentItem.removeClass("content-item-active");
+                let dataNum = $(this).attr("data-num");
+                $(`.content-item[data-num=${dataNum}]`).addClass("content-item-active");
+            })
+
+            $("#advertisementForm").submit(function (event) {
+                event.preventDefault();
+
+                const title = $("#advertisementTitleInputVal").val();
+                const description = $("#advertisementDescriptionInputVal").val();
+                const images = [];
+                const inputFiles = $("#advertisementImageInputVal")[0].files;
+                // Tạo một mảng chứa đường dẫn của các ảnh
+                const imageUrls = [];
+                for (let i = 0; i < inputFiles.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        imageUrls.push(event.target.result);
+
+                        // Nếu đã lưu đường dẫn của tất cả ảnh, thì lưu vào localStorage
+                        if (imageUrls.length === inputFiles.length) {
+                            const advertisement = {
+                                title: title,
+                                des: description,
+                                images: imageUrls
+                            };
+                            localStorage.setItem("ads", JSON.stringify(advertisement));
+                            alert("Quảng cáo đã được tạo.");
+                        }
+                    };
+                    reader.readAsDataURL(inputFiles[i]);
+                }
+            });
+
+        })
+    </script>
+</body>
+
+</html>

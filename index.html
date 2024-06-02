@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiggy - Quản lý tài chính cá nhân</title>
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.7.1.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+</head>
+
+<body>
+
+    <header class="header">
+        <section class="header-logo">
+            <i class="fa-solid fa-piggy-bank"></i>
+            Spiggy
+        </section>
+        <section class="header-right">
+            <section class="header-right-time">
+                <i style="margin-right: 5px;" class="fa-solid fa-calendar-days"></i>
+                <span id="header-date"></span>
+            </section>
+            <section class="header-right-account">
+                <i style="margin-right: 5px;" class="fa-solid fa-user"></i>
+                <div class="dropdown">
+                    <span id="name-user" class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Đào Xuân Phượng
+                    </span>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa-solid fa-gear"></i>
+                                Cài đặt
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item" href="./view/signin.html">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </header>
+
+    <main class="content">
+        <div class="row">
+            <div class="col-3">
+                <ul class="list-group">
+                    <li data-num="1" class="list-group-item list-item-control active">Bảng điều khiển</li>
+                    <li data-num="2" class="list-group-item list-item-control">Thu nhập</li>
+                    <li data-num="3" class="list-group-item list-item-control">Lập ngân sách</li>
+                    <li data-num="4" class="list-group-item list-item-control">Lập mục tiêu</li>
+                    <li data-num="5" class="list-group-item list-item-control">Báo cáo thu chi</li>
+                </ul>
+                <section class="slider">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Banner -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+            <div class="col-9">
+                <section data-num="1" class="content-item content-item-active">
+                    <div class="row list-card">
+                        <!-- Dữ liệu mẫu giao dịch -->
+                        <div class="col-3">
+                            <div class="card">
+                                <section class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div class="card-body">
+                                    <h5 class="card-title">Tổng thu nhập</h5>
+                                    <p class="card-text">60.000.000 VND</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Thêm thẻ cho các danh mục khác -->
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <section>
+                                <canvas id="chart1" style="width:100%;
+                            height:500px"></canvas>
+                            </section>
+                        </div>
+                        <div class="col-6">
+                            <span style="color: #666666;font-size: 24px; font-weight: bold;">Lịch sử chi phí</span>
+                            <ul class="list-group" id="transactionList">
+                                <!-- Dữ liệu mẫu giao dịch -->
+                            </ul>
+                            <button class="mt-2 btn btn-success btn-add-bill">Thêm thanh toán</button>
+                        </div>
+                    </div>
+                </section>
+                <section data-num="2" class="content-item">
+                    <div id="incomeContainer">
+                        <h1 id="incomeTitle">Quản lý thu nhập</h1>
+                        <form id="incomeForm">
+                            <div class="form-group">
+                                <label for="incomeSource" class="form-label">Nguồn thu nhập:</label>
+                                <input type="text" id="incomeSource" name="incomeSource" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="incomeAmount" class="form-label">Số tiền thu nhập (VND):</label>
+                                <input type="number" id="incomeAmount" name="incomeAmount" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="incomeDate" class="form-label">Ngày thu nhập:</label>
+                                <input type="date" id="incomeDate" name="incomeDate" class="form-input" required>
+                            </div>
+                            <button type="submit" id="incomeSubmit">Lưu</button>
+                        </form>
+                    </div>
+
+                </section>
+                <section data-num="3" class="content-item">
+                    <div class="form-container">
+                        <h2 class="form-title">Ngân sách chi tiêu</h2>
+                        <form id="budgetForm" class="budget-form">
+                            <div class="form-group">
+                                <label for="budgetName" class="form-label">Tên ngân sách:</label>
+                                <input type="text" id="budgetName" name="budgetName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount" class="form-label">Số tiền:</label>
+                                <input type="number" id="amount" name="amount" class="form-input" required>
+                            </div>
+                            <input type="submit" value="Tạo ngân sách" class="form-submit">
+                        </form>
+                    </div>
+                </section>
+                <section data-num="4" class="content-item">
+                    <div class="goal-form-container">
+                        <h2 class="goal-form-title">Lập mục tiêu</h2>
+                        <form id="goalForm" class="goal-form">
+                            <div class="goal-form-group">
+                                <label for="goalName" class="goal-form-label">Tên mục tiêu:</label>
+                                <input type="text" id="goalName" name="goalName" class="goal-form-input" required>
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="goalAmount" class="goal-form-label">Số tiền mục tiêu:</label>
+                                <input type="number" id="goalAmount" name="goalAmount" class="goal-form-input" required>
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="deadline" class="goal-form-label">Hạn chót:</label>
+                                <input type="date" id="deadline" name="deadline" class="goal-form-input" required>
+                            </div>
+                            <input type="submit" value="Lưu mục tiêu" class="goal-form-submit">
+                        </form>
+                    </div>
+                </section>
+                <section data-num="5" class="content-item">
+                    <canvas id="chart2" style="width:100%;"></canvas>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Thêm thanh toán</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="mb-3">
+                            <label for="paymentName" class="form-label">Tên thanh toán</label>
+                            <input type="text" class="form-control" id="paymentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentDate" class="form-label">Ngày thanh toán</label>
+                            <input type="date" class="form-control" id="paymentDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentType" class="form-label">Loại thanh toán</label>
+                            <select class="form-select" id="paymentType" required>
+                                <option value="">Chọn loại thanh toán</option>
+                                <option value="cash">Tiền mặt</option>
+                                <option value="credit">Thẻ tín dụng</option>
+                                <option value="bank">Chuyển khoản ngân hàng</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Dữ liệu mẫu giao dịch
+            var transactions = [
+                { category: "Ăn uống", amount: 6000000 },
+                { category: "Đi chơi", amount: 6000000 },
+                { category: "Học phí", amount: 6000000 },
+                { category: "Bạn bè", amount: 6000000 }
+            ];
+
+            // Show list of transactions
+            var transactionList = $("#transactionList");
+            transactions.forEach(function (transaction) {
+                transactionList.append(`<li class="list-group-item d-flex justify-content-between align-items-center">${transaction.category}<span class="badge text-bg-primary rounded-pill">-${transaction.amount} VND</span></li>`);
+            });
+
+            // Get date
+            let date = new Date();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            }
+            let year = date.getFullYear();
+            $("#header-date").html(`${day}/${month}/${year}`);
+
+            //Chart 1
+            var xValues = ["Ăn uống", "Đi chơi", "Học phí", "Bạn bè"];
+            var yValues = [6000000, 8000000, 5000000, 7000000];
+            var barColors = ["red", "green", "blue", "orange"];
+
+            new Chart("chart1", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "Chi tiêu hôm nay",
+                        fontSize: 24
+                    }
+                }
+            });
+
+            //Chart 2
+            // Thay đổi xValues2 và yValues2 để phản ánh dữ liệu thực tế
+            var xValues2 = ["Ăn uống", "Đi chơi", "Học phí", "Bạn bè"];
+            var yValues2 = [6000000, 8000000, 4500000, 7000000];
+            var barColors2 = [
+                "#b91d47",
+                "#00aba9",
+                "#2b5797",
+                "#e8c3b9"
+            ];
+
+            new Chart("chart2", {
+                type: "pie",
+                data: {
+                    labels: xValues2,
+                    datasets: [{
+                        backgroundColor: barColors2,
+                        data: yValues2
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Chi tiêu hôm nay"
+                    }
+                }
+            });
+
+            // Click sidebars
+            $(".list-item-control").click(function () {
+                const listItemControl = $(".list-item-control");
+                listItemControl.removeClass("active");
+                $(this).addClass("active");
+
+                const contentItem = $(".content-item");
+                contentItem.removeClass("content-item-active");
+                let dataNum = $(this).attr("data-num");
+                $(`.content-item[data-num=${dataNum}]`).addClass("content-item-active");
+            });
+
+            //Add bill
+            $(".btn-add-bill").click(function () {
+                $("#paymentModal").modal("show");
+            });
+
+            $("#paymentForm").submit(function (event) {
+                event.preventDefault();
+                // Xử lý dữ liệu khi người dùng gửi form
+                $("#paymentModal").modal("hide");
+            });
+
+            // Get ads from local storage
+            let arrayImg = [
+                "car_1.jpg",
+                "car_2.jpg",
+                "car_3.png",
+            ];
+            const advertisementData = localStorage.getItem("ads");
+            if (advertisementData) {
+                const advertisement = JSON.parse(advertisementData);
+                const images = advertisement.images;
+
+                const carouselInner = $('.carousel-inner');
+                carouselInner.empty(); // Xóa bỏ các item cũ trong carousel trước khi thêm mới
+
+                for (let i = 0; i < images.length; i++) {
+                    const imageUrl = images[i]; // Lấy đường dẫn đến ảnh từ dữ liệu localStorage
+                    const carouselItem = $('<div class="carousel-item"></div>');
+                    const img = $('<img class="d-block w-100">');
+                    img.attr('src', imageUrl);
+                    carouselItem.append(img);
+
+                    // Thêm lớp 'active' cho carousel item đầu tiên
+                    if (i === 0) {
+                        carouselItem.addClass('active');
+                    }
+                    carouselInner.append(carouselItem);
+                }
+            } else {
+                // Hiển thị ảnh từ mảng arrayImg
+                const carouselInner = $('.carousel-inner');
+                carouselInner.empty(); // Xóa bỏ các item cũ trong carousel trước khi thêm mới
+
+                for (let i = 0; i < arrayImg.length; i++) {
+                    const imageUrl = `./img/${arrayImg[i]}`;
+                    const carouselItem = $('<div class="carousel-item"></div>');
+                    const img = $('<img class="d-block w-100">');
+                    img.attr('src', imageUrl);
+                    carouselItem.append(img);
+
+                    // Thêm lớp 'active' cho carousel item đầu tiên
+                    if (i === 0) {
+                        carouselItem.addClass('active');
+                    }
+                    carouselInner.append(carouselItem);
+                }
+            }
+
+
+
+        })
+    </script>
+</body>
+
+</html>
