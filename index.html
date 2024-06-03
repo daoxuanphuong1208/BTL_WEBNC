@@ -58,10 +58,10 @@
             <div class="col-3">
                 <ul class="list-group">
                     <li data-num="1" class="list-group-item list-item-control active">Bảng điều khiển</li>
-                    <li data-num="2" class="list-group-item list-item-control">Thu nhập</li>
-                    <li data-num="3" class="list-group-item list-item-control">Lập ngân sách</li>
-                    <li data-num="4" class="list-group-item list-item-control">Lập mục tiêu</li>
-                    <li data-num="5" class="list-group-item list-item-control">Báo cáo thu chi</li>
+                    <li data-num="2" class="list-group-item list-item-control">Khoản thu</li>
+                    <li data-num="3" class="list-group-item list-item-control">Khoản chi</li>
+                    <li data-num="4" class="list-group-item list-item-control">Khoản vay</li>
+                    <li data-num="5" class="list-group-item list-item-control">Mục tiêu</li>
                 </ul>
                 <section class="slider">
                     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -87,57 +87,214 @@
                         <!-- Dữ liệu mẫu giao dịch -->
                         <div class="col-3">
                             <div class="card">
+                                <section style="background-color: #009D55;" class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div style="background-image: linear-gradient(to right, #00C76C, #00A95B);"
+                                    class="card-body">
+                                    <h5 class="card-title">Tổng thu nhập</h5>
+                                    <p class="card-text">
+                                        10.000.000 VND
+                                        <br>
+                                        Còn dư: 20.000.000 VND
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card">
                                 <section class="card-icon">
                                     <i class="fa-solid fa-money-check-dollar"></i>
                                 </section>
                                 <div class="card-body">
-                                    <h5 class="card-title">Tổng thu nhập</h5>
+                                    <h5 class="card-title">Tài khoản ví Tiết kiệm</h5>
+                                    <p class="card-text">6.000.000 VND</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card">
+                                <section style="background-color: #951144;" class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div style="background-image: linear-gradient(to right, #CB196D, #B91560);"
+                                    class="card-body">
+                                    <h5 class="card-title">Tài khoản ví Mục tiêu</h5>
+                                    <p class="card-text">30.000.000 VND</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card">
+                                <section style="background-color: #005F97;" class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div style="background-image: linear-gradient(to right, #0088DA, #0074B9);"
+                                    class="card-body">
+                                    <h5 class="card-title">Tài khoản ví Vay</h5>
                                     <p class="card-text">60.000.000 VND</p>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Thêm thẻ cho các danh mục khác -->
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <section>
-                                <canvas id="chart1" style="width:100%;
-                            height:500px"></canvas>
-                            </section>
+                            <table class="table table-info table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Tháng</th>
+                                        <th scope="col">Thu nhập</th>
+                                        <th scope="col">Chi tiêu</th>
+                                        <th scope="col">Chênh lệch</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>20.000.000</td>
+                                        <td>10.000.000</td>
+                                        <td>10.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>22.000.000</td>
+                                        <td>9.000.000</td>
+                                        <td>13.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>26.000.000</td>
+                                        <td>11.000.000</td>
+                                        <td>15.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">6</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">7</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">8</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">9</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">10</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">11</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">12</th>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="col-6">
-                            <span style="color: #666666;font-size: 24px; font-weight: bold;">Lịch sử chi phí</span>
-                            <ul class="list-group" id="transactionList">
-                                <!-- Dữ liệu mẫu giao dịch -->
-                            </ul>
-                            <button class="mt-2 btn btn-success btn-add-bill">Thêm thanh toán</button>
+                            <section>
+                                <canvas id="chart1" style="width:100%;
+                                    height:500px"></canvas>
+                            </section>
                         </div>
                     </div>
                 </section>
                 <section data-num="2" class="content-item">
-                    <div id="incomeContainer">
-                        <h1 id="incomeTitle">Quản lý thu nhập</h1>
-                        <form id="incomeForm">
-                            <div class="form-group">
-                                <label for="incomeSource" class="form-label">Nguồn thu nhập:</label>
-                                <input type="text" id="incomeSource" name="incomeSource" class="form-input" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="incomeAmount" class="form-label">Số tiền thu nhập (VND):</label>
-                                <input type="number" id="incomeAmount" name="incomeAmount" class="form-input" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="incomeDate" class="form-label">Ngày thu nhập:</label>
-                                <input type="date" id="incomeDate" name="incomeDate" class="form-input" required>
-                            </div>
-                            <button type="submit" id="incomeSubmit">Lưu</button>
-                        </form>
+                    <div class="income-form">
+                        <input type="text" id="name" placeholder="Tên thu nhập">
+                        <input type="date" id="date">
+                        <input type="number" id="amount" placeholder="Số tiền">
+                        <button id="add-btn">Thêm</button>
                     </div>
 
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên thu nhập</th>
+                                <th>Ngày</th>
+                                <th>Số tiền</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="income-table-body"></tbody>
+                    </table>
                 </section>
                 <section data-num="3" class="content-item">
+                    <div class="row list-item-budget">
+                        <div class="col-3">
+                            <div div class="card">
+                                <section class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div class="card-body">
+                                    <h5 class="card-title">Ăn uống</h5>
+                                    <p class="card-text">3.000.000 VND</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card">
+                                <section class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div class="card-body">
+                                    <h5 class="card-title">Xe cộ</h5>
+                                    <p class="card-text">500.000 VND</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card">
+                                <section class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div class="card-body">
+                                    <h5 class="card-title">Tiền nhà</h5>
+                                    <p class="card-text">4.000.000 VND</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-container">
-                        <h2 class="form-title">Ngân sách chi tiêu</h2>
+                        <h2 class="form-title">Ngân sách tự chi/tháng</h2>
                         <form id="budgetForm" class="budget-form">
                             <div class="form-group">
                                 <label for="budgetName" class="form-label">Tên ngân sách:</label>
@@ -150,10 +307,41 @@
                             <input type="submit" value="Tạo ngân sách" class="form-submit">
                         </form>
                     </div>
+
+                    <div>
+                        <div class="expense-form">
+                            <input type="text" id="expense-name" placeholder="Tên chi phí">
+                            <input type="date" id="expense-date">
+                            <select id="expense-type">
+                                <option value="Food">Ví Tổng thu nhập</option>
+                                <option value="Transport">Ví Tiết kiệm</option>
+                                <option value="Utilities">Ví Đầu tư</option>
+                                <option value="Others">Ví Vay</option>
+                            </select>
+                            <input type="number" id="expense-amount" placeholder="Số tiền">
+                            <button id="add-expense-btn">Thêm</button>
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên chi phí</th>
+                                    <th>Ngày</th>
+                                    <th>Ví thanh toán</th>
+                                    <th>Số tiền</th>
+                                    <th>Hoạt động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expense-table-body"></tbody>
+                        </table>
+                    </div>
                 </section>
                 <section data-num="4" class="content-item">
+                    Vay
+                </section>
+                <section data-num="5" class="content-item">
                     <div class="goal-form-container">
-                        <h2 class="goal-form-title">Lập mục tiêu</h2>
+                        <h2 class="goal-form-title">Mục tiêu</h2>
                         <form id="goalForm" class="goal-form">
                             <div class="goal-form-group">
                                 <label for="goalName" class="goal-form-label">Tên mục tiêu:</label>
@@ -171,65 +359,14 @@
                         </form>
                     </div>
                 </section>
-                <section data-num="5" class="content-item">
-                    <canvas id="chart2" style="width:100%;"></canvas>
-                </section>
             </div>
         </div>
     </main>
-
-    <!-- Modal -->
-    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="paymentModalLabel">Thêm thanh toán</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="paymentForm">
-                        <div class="mb-3">
-                            <label for="paymentName" class="form-label">Tên thanh toán</label>
-                            <input type="text" class="form-control" id="paymentName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="paymentDate" class="form-label">Ngày thanh toán</label>
-                            <input type="date" class="form-control" id="paymentDate" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="paymentType" class="form-label">Loại thanh toán</label>
-                            <select class="form-select" id="paymentType" required>
-                                <option value="">Chọn loại thanh toán</option>
-                                <option value="cash">Tiền mặt</option>
-                                <option value="credit">Thẻ tín dụng</option>
-                                <option value="bank">Chuyển khoản ngân hàng</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Lưu</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
         $(document).ready(function () {
-            // Dữ liệu mẫu giao dịch
-            var transactions = [
-                { category: "Ăn uống", amount: 6000000 },
-                { category: "Đi chơi", amount: 6000000 },
-                { category: "Học phí", amount: 6000000 },
-                { category: "Bạn bè", amount: 6000000 }
-            ];
-
-            // Show list of transactions
-            var transactionList = $("#transactionList");
-            transactions.forEach(function (transaction) {
-                transactionList.append(`<li class="list-group-item d-flex justify-content-between align-items-center">${transaction.category}<span class="badge text-bg-primary rounded-pill">-${transaction.amount} VND</span></li>`);
-            });
-
             // Get date
             let date = new Date();
             let day = date.getDate();
@@ -241,8 +378,8 @@
             $("#header-date").html(`${day}/${month}/${year}`);
 
             //Chart 1
-            var xValues = ["Ăn uống", "Đi chơi", "Học phí", "Bạn bè"];
-            var yValues = [6000000, 8000000, 5000000, 7000000];
+            var xValues = ["Ăn uống", "Xe cộ", "Tiền nhà", "Cafe với bạn bè"];
+            var yValues = [50000, 20000, 130000, 45000];
             var barColors = ["red", "green", "blue", "orange"];
 
             new Chart("chart1", {
@@ -261,35 +398,12 @@
                         text: "Chi tiêu hôm nay",
                         fontSize: 24
                     }
-                }
-            });
-
-            //Chart 2
-            // Thay đổi xValues2 và yValues2 để phản ánh dữ liệu thực tế
-            var xValues2 = ["Ăn uống", "Đi chơi", "Học phí", "Bạn bè"];
-            var yValues2 = [6000000, 8000000, 4500000, 7000000];
-            var barColors2 = [
-                "#b91d47",
-                "#00aba9",
-                "#2b5797",
-                "#e8c3b9"
-            ];
-
-            new Chart("chart2", {
-                type: "pie",
-                data: {
-                    labels: xValues2,
-                    datasets: [{
-                        backgroundColor: barColors2,
-                        data: yValues2
-                    }]
                 },
-                options: {
-                    title: {
-                        display: true,
-                        text: "Chi tiêu hôm nay"
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
-                }
+                },
             });
 
             // Click sidebars
@@ -302,17 +416,6 @@
                 contentItem.removeClass("content-item-active");
                 let dataNum = $(this).attr("data-num");
                 $(`.content-item[data-num=${dataNum}]`).addClass("content-item-active");
-            });
-
-            //Add bill
-            $(".btn-add-bill").click(function () {
-                $("#paymentModal").modal("show");
-            });
-
-            $("#paymentForm").submit(function (event) {
-                event.preventDefault();
-                // Xử lý dữ liệu khi người dùng gửi form
-                $("#paymentModal").modal("hide");
             });
 
             // Get ads from local storage
@@ -363,6 +466,222 @@
             }
 
 
+            //Handle create budget
+            $("#budgetForm").submit(function (event) {
+                event.preventDefault();
+
+                // Lấy dữ liệu từ form
+                var budgetName = $("#budgetName").val();
+                var amount = $("#amount").val();
+
+                // Tạo một mục ngân sách mới
+                var newItem = `
+            <div class="col-3">
+                <div class="card">
+                    <section class="card-icon">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                    </section>
+                    <div class="card-body">
+                        <h5 class="card-title">${budgetName}</h5>
+                        <p class="card-text">${amount} VND</p>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                // Thêm mục ngân sách mới vào danh sách
+                $(".list-item-budget").append(newItem);
+
+                // Đặt lại form
+                $("#budgetForm")[0].reset();
+            });
+
+
+
+
+
+
+
+            //Handle CRUD incom
+            // Dữ liệu mẫu ban đầu
+            var incomes = [
+                { name: 'Lương', date: '2024-06-01', amount: '5000000' },
+                { name: 'Thưởng', date: '2024-06-02', amount: '1000000' }
+            ];
+
+            // Hiển thị dữ liệu
+            function displayIncomes() {
+                $("#income-table-body").empty();
+                $.each(incomes, function (index, income) {
+                    $("#income-table-body").append("<tr><td>" + income.name + "</td><td>" + income.date + "</td><td>" + income.amount + "</td><td><button class='edit-btn' data-index='" + index + "'>Sửa</button><button class='delete-btn' data-index='" + index + "'>Xóa</button></td></tr>");
+                });
+            }
+
+            displayIncomes();
+
+            // Thêm thu nhập mới
+            $("#add-btn").click(function () {
+                var name = $("#name").val();
+                var date = $("#date").val();
+                var amount = $("#amount").val();
+
+                // Validate dữ liệu
+                if (name === "" || date === "" || amount === "") {
+                    alert("Vui lòng nhập đủ thông tin.");
+                    return;
+                }
+
+                // Thêm vào mảng và hiển thị lại
+                incomes.push({ name: name, date: date, amount: amount });
+                displayIncomes();
+
+                // Xóa nội dung của các trường nhập
+                $("#name").val("");
+                $("#date").val("");
+                $("#amount").val("");
+            });
+
+            // Sửa thu nhập
+            $(document).on("click", ".edit-btn", function () {
+                var index = $(this).data("index");
+                var income = incomes[index];
+
+                // Hiển thị dữ liệu trên form nhập
+                $("#name").val(income.name);
+                $("#date").val(income.date);
+                $("#amount").val(income.amount);
+
+                // Ẩn nút Thêm và hiển thị nút Cập nhật
+                $("#add-btn").hide();
+                $("#update-btn").remove();
+                $(".income-form").append("<button id='update-btn'>Cập nhật</button>");
+
+                // Xử lý sự kiện khi nhấn nút Cập nhật
+                $("#update-btn").click(function () {
+                    var name = $("#name").val();
+                    var date = $("#date").val();
+                    var amount = $("#amount").val();
+
+                    // Validate dữ liệu
+                    if (name === "" || date === "" || amount === "") {
+                        alert("Vui lòng nhập đủ thông tin.");
+                        return;
+                    }
+
+                    // Cập nhật dữ liệu và hiển thị lại
+                    incomes[index] = { name: name, date: date, amount: amount };
+                    displayIncomes();
+
+                    // Xóa nội dung của các trường nhập và hiển thị lại nút Thêm
+                    $("#name").val("");
+                    $("#date").val("");
+                    $("#amount").val("");
+                    $("#add-btn").show();
+                    $("#update-btn").remove();
+                });
+            });
+
+            // Xóa thu nhập
+            $(document).on("click", ".delete-btn", function () {
+                if (confirm("Bạn có chắc chắn muốn xóa mục này không?")) {
+                    var index = $(this).data("index");
+                    incomes.splice(index, 1);
+                    displayIncomes();
+                }
+            });
+
+            //Handle expense
+            // Dữ liệu mẫu ban đầu
+            var expenses = [
+                { name: 'Mua thức ăn', date: '2024-06-01', type: 'Food', amount: '500000' },
+                { name: 'Chi phí di chuyển', date: '2024-06-02', type: 'Transport', amount: '200000' }
+            ];
+
+            // Hiển thị dữ liệu
+            function displayExpenses() {
+                $("#expense-table-body").empty();
+                $.each(expenses, function (index, expense) {
+                    $("#expense-table-body").append("<tr><td>" + expense.name + "</td><td>" + expense.date + "</td><td>" + expense.type + "</td><td>" + expense.amount + "</td><td><button class='edit-expense-btn' data-index='" + index + "'>Sửa</button><button class='delete-expense-btn' data-index='" + index + "'>Xóa</button></td></tr>");
+                });
+            }
+
+            displayExpenses();
+
+            // Thêm chi phí mới
+            $("#add-expense-btn").click(function () {
+                var name = $("#expense-name").val();
+                var date = $("#expense-date").val();
+                var type = $("#expense-type").val();
+                var amount = $("#expense-amount").val();
+
+                // Validate dữ liệu
+                if (name === "" || date === "" || type === "" || amount === "") {
+                    alert("Vui lòng nhập đủ thông tin.");
+                    return;
+                }
+
+                // Thêm vào mảng và hiển thị lại
+                expenses.push({ name: name, date: date, type: type, amount: amount });
+                displayExpenses();
+
+                // Xóa nội dung của các trường nhập
+                $("#expense-name").val("");
+                $("#expense-date").val("");
+                $("#expense-type").val("");
+                $("#expense-amount").val("");
+            });
+
+            // Sửa chi phí
+            $(document).on("click", ".edit-expense-btn", function () {
+                var index = $(this).data("index");
+                var expense = expenses[index];
+
+                // Hiển thị dữ liệu trên form nhập
+                $("#expense-name").val(expense.name);
+                $("#expense-date").val(expense.date);
+                $("#expense-type").val(expense.type);
+                $("#expense-amount").val(expense.amount);
+
+                // Ẩn nút Thêm và hiển thị nút Cập nhật
+                $("#add-expense-btn").hide();
+                $("#update-expense-btn").remove();
+                $(".expense-form").append("<button id='update-expense-btn'>Cập nhật</button>");
+
+                // Xử lý sự kiện khi nhấn nút Cập nhật
+                $("#update-expense-btn").click(function () {
+                    var name = $("#expense-name").val();
+                    var date = $("#expense-date").val();
+                    var type = $("#expense-type").val();
+                    var amount = $("#expense-amount").val();
+
+                    // Validate dữ liệu
+                    if (name === "" || date === "" || type === "" || amount === "") {
+                        alert("Vui lòng nhập đủ thông tin.");
+                        return;
+                    }
+
+                    // Cập nhật dữ liệu và hiển thị lại
+                    expenses[index] = { name: name, date: date, type: type, amount: amount };
+                    displayExpenses();
+
+                    // Xóa nội dung của các trường nhập và hiển thị lại nút Thêm
+                    $("#expense-name").val("");
+                    $("#expense-date").val("");
+                    $("#expense-type").val("");
+                    $("#expense-amount").val("");
+                    $("#add-expense-btn").show();
+                    $("#update-expense-btn").remove();
+                });
+            });
+
+            // Xóa chi phí
+            $(document).on("click", ".delete-expense-btn", function () {
+                if (confirm("Bạn có chắc chắn muốn xóa mục này không?")) {
+                    var index = $(this).data("index");
+                    expenses.splice(index, 1);
+                    displayExpenses();
+                }
+            });
 
         })
     </script>

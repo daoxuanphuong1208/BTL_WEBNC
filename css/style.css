@@ -38,6 +38,7 @@ a {
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
+    margin-bottom: 30px;
 }
 
 .card-body {
@@ -124,7 +125,8 @@ a {
 /* Form budget */
 .form-container {
     max-width: 400px;
-    margin: 0 auto;
+    margin-left: 30px;
+    margin-bottom: 60px;
 }
 
 .form-group {
@@ -236,62 +238,87 @@ a {
     background-color: #45a049;
 }
 
-/* Modal */
-.modal-content {
-    max-width: 400px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 8px;
-}
 
-.modal-header {
-    background-color: #3c8dbc;
-    color: #fff;
-    border-bottom: none;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.modal-title {
-    font-size: 24px;
-}
-
-.modal-body {
-    padding: 20px;
-    background-color: #fff;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-.modal-body .form-label {
-    color: #333;
-}
-
-.modal-body .form-control {
+table {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    border-collapse: collapse;
 }
 
-.modal-body .form-select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+table,
+th,
+td {
+    border: 1px solid #ddd;
 }
 
-.modal-body .btn-primary {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* CRUD income */
+.income-form {
+    margin-bottom: 20px;
+}
+
+.income-form input,
+#expense-type {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.income-form button {
+    padding: 5px 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 5px 10px;
     cursor: pointer;
+    color: white;
+    border: none;
 }
 
-.modal-body .btn-primary:hover {
-    background-color: #45a049;
+.edit-btn {
+    background-color: #4CAF50;
+}
+
+.delete-btn {
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+/* CRUD expense */
+.expense-form {
+    margin-bottom: 20px;
+}
+
+.expense-form input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.expense-form button {
+    padding: 5px 10px;
+}
+
+.edit-expense-btn,
+.delete-expense-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+.edit-expense-btn {
+    background-color: #4CAF50;
+}
+
+.delete-expense-btn {
+    margin-left: 10px;
+    background-color: #f44336;
 }
