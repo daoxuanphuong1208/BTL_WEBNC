@@ -34,7 +34,7 @@ a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 100px;
+    height: 150px;
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
@@ -283,14 +283,21 @@ th {
     border: none;
 }
 
-.edit-btn {
+#add-btn,
+#update-btn {
     background-color: #4CAF50;
+}
+
+.edit-btn {
+    background-color: #67D8D8;
 }
 
 .delete-btn {
     margin-left: 10px;
     background-color: #f44336;
 }
+
+
 
 /* CRUD expense */
 .expense-form {
@@ -307,18 +314,214 @@ th {
 }
 
 .edit-expense-btn,
-.delete-expense-btn {
+.delete-expense-btn,
+.restore-expense-btn {
     padding: 5px 10px;
     cursor: pointer;
     color: white;
     border: none;
 }
 
-.edit-expense-btn {
+#add-expense-btn,
+#update-expense-btn {
     background-color: #4CAF50;
+}
+
+.edit-expense-btn {
+    background-color: #67D8D8;
 }
 
 .delete-expense-btn {
     margin-left: 10px;
     background-color: #f44336;
+}
+
+.restore-expense-btn {
+    margin-left: 10px;
+    background-color: #FFA500;
+}
+
+
+/* Loan amout */
+.loan-amount-form {
+    margin-bottom: 20px;
+}
+
+.loan-amount-form input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.loan-amount-form button {
+    padding: 5px 10px;
+}
+
+.edit-loan-btn,
+.delete-loan-btn,
+.restore-loan-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+#add-loan-btn,
+#update-loan-btn {
+    background-color: #4CAF50;
+}
+
+.edit-loan-btn {
+    background-color: #67D8D8;
+}
+
+.delete-loan-btn {
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+.checkout-loan-btn {
+    margin-left: 10px;
+    background-color: #FFA500;
+}
+
+
+/* Form target */
+.expense-form {
+    margin-bottom: 20px;
+}
+
+.expense-form input[type="text"],
+.expense-form input[type="date"],
+.expense-form button {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.expense-form label {
+    display: block;
+}
+
+.expense-form button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.expense-form button.edit-expense-btn {
+    background-color: #67D8D8;
+}
+
+.expense-form button.delete-expense-btn {
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+.expense-form button.restore-expense-btn {
+    margin-left: 10px;
+    background-color: #FFA500;
+}
+
+/* Target */
+.goal-form {
+    margin-bottom: 20px;
+}
+
+.goal-form input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.goal-form button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    /* Màu nền cho nút thêm */
+    color: white;
+    /* Màu chữ cho nút thêm */
+    border: none;
+    /* Loại bỏ viền nút */
+    cursor: pointer;
+    /* Thay đổi con trỏ chuột khi hover */
+}
+
+.edit-goal-btn,
+.delete-goal-btn,
+.restore-goal-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+.edit-goal-btn {
+    background-color: #67D8D8;
+}
+
+.delete-goal-btn {
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal input[type="text"],
+.modal input[type="number"],
+.modal input[type="phone"],
+.modal select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.modal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }

@@ -92,12 +92,9 @@
                                 </section>
                                 <div style="background-image: linear-gradient(to right, #00C76C, #00A95B);"
                                     class="card-body">
-                                    <h5 class="card-title">Tổng thu nhập</h5>
-                                    <p class="card-text">
-                                        10.000.000 VND
-                                        <br>
-                                        Còn dư: 20.000.000 VND
-                                    </p>
+                                    <h5 class="card-title">Thu nhập</h5>
+                                    <p style="margin: 0;">Tháng này: 10.000.000 VND </p>
+                                    <p style="margin: 0;">Tổng dư hiện tại: 20.000.000 VND</p>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +105,19 @@
                                 </section>
                                 <div class="card-body">
                                     <h5 class="card-title">Tài khoản ví Tiết kiệm</h5>
-                                    <p class="card-text">6.000.000 VND</p>
+                                    <p class="card-text">24.000.000 VND</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card">
+                                <section style="background-color: #005F97;" class="card-icon">
+                                    <i class="fa-solid fa-money-check-dollar"></i>
+                                </section>
+                                <div style="background-image: linear-gradient(to right, #0088DA, #0074B9);"
+                                    class="card-body">
+                                    <h5 class="card-title">Tài khoản ví Giáo dục</h5>
+                                    <p class="card-text">18.000.000 VND</p>
                                 </div>
                             </div>
                         </div>
@@ -124,19 +133,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <section style="background-color: #005F97;" class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div style="background-image: linear-gradient(to right, #0088DA, #0074B9);"
-                                    class="card-body">
-                                    <h5 class="card-title">Tài khoản ví Vay</h5>
-                                    <p class="card-text">60.000.000 VND</p>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Thêm thẻ cho các danh mục khác -->
                     </div>
                     <div class="row">
@@ -302,7 +298,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="amount" class="form-label">Số tiền:</label>
-                                <input type="number" id="amount" name="amount" class="form-input" required>
+                                <input type="number" id="amount" name="amount" class="form-input budget-input" required>
                             </div>
                             <input type="submit" value="Tạo ngân sách" class="form-submit">
                         </form>
@@ -315,8 +311,8 @@
                             <select id="expense-type">
                                 <option value="Food">Ví Tổng thu nhập</option>
                                 <option value="Transport">Ví Tiết kiệm</option>
-                                <option value="Utilities">Ví Đầu tư</option>
-                                <option value="Others">Ví Vay</option>
+                                <option value="Others">Ví Giáo dục</option>
+                                <option value="Utilities">Ví Mục tiêu</option>
                             </select>
                             <input type="number" id="expense-amount" placeholder="Số tiền">
                             <button id="add-expense-btn">Thêm</button>
@@ -337,36 +333,112 @@
                     </div>
                 </section>
                 <section data-num="4" class="content-item">
-                    Vay
+                    <div class="loan-amount-form">
+                        <input type="text" id="loan-name" placeholder="Tên khoản vay">
+                        <input type="number" id="loan-amount" placeholder="Số tiền">
+                        <label for="loan-date-borrowed">Ngày vay</label>
+                        <input type="date" id="loan-date-borrowed">
+                        <label for="loan-due-date">Hạn trả</label>
+                        <input type="date" id="loan-due-date">
+                        <input style="width: 120px;" type="number" id="loan-interest" placeholder="Lãi suất vay">
+                        <button style="margin-top: 10px;" id="add-loan-btn">Thêm</button>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên khoản vay</th>
+                                <th>Số tiền</th>
+                                <th>Ngày vay</th>
+                                <th>Hạn trả</th>
+                                <th>Số ngày còn lại</th>
+                                <th>Lãi suất vay</th>
+                                <th>Hoạt động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="loan-table-body"></tbody>
+                    </table>
+
+                    <button class="link-account-finance" style="margin-top: 10px; background-color: aqua;">Liên kết ngân
+                        hàng, thanh toán tự
+                        động</button>
                 </section>
                 <section data-num="5" class="content-item">
-                    <div class="goal-form-container">
-                        <h2 class="goal-form-title">Mục tiêu</h2>
-                        <form id="goalForm" class="goal-form">
-                            <div class="goal-form-group">
-                                <label for="goalName" class="goal-form-label">Tên mục tiêu:</label>
-                                <input type="text" id="goalName" name="goalName" class="goal-form-input" required>
-                            </div>
-                            <div class="goal-form-group">
-                                <label for="goalAmount" class="goal-form-label">Số tiền mục tiêu:</label>
-                                <input type="number" id="goalAmount" name="goalAmount" class="goal-form-input" required>
-                            </div>
-                            <div class="goal-form-group">
-                                <label for="deadline" class="goal-form-label">Hạn chót:</label>
-                                <input type="date" id="deadline" name="deadline" class="goal-form-input" required>
-                            </div>
-                            <input type="submit" value="Lưu mục tiêu" class="goal-form-submit">
-                        </form>
+                    <div class="goal-form">
+                        <input type="text" id="goal-name" placeholder="Tên mục tiêu">
+                        <label for="goal-date">Ngày lập</label>
+                        <input type="date" id="goal-date">
+                        <input type="text" id="goal-amount" placeholder="Số tiền">
+                        <input type="text" id="goal-current-price" placeholder="Giá hiện tại">
+                        <input style="width: 100px;" type="text" id="goal-progress" placeholder="Tiến độ">
+                        <button id="add-goal-btn">Thêm</button>
                     </div>
+
+                    <table class="goal-table">
+                        <thead>
+                            <tr>
+                                <th>Tên mục tiêu</th>
+                                <th>Ngày</th>
+                                <th>Số tiền</th>
+                                <th>Giá hiện tại</th>
+                                <th>Tiến độ</th>
+                                <th>Hoạt động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="goal-table-body"></tbody>
+                    </table>
+
                 </section>
             </div>
         </div>
     </main>
 
+    <!-- Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span style="text-align: right;" class="close">&times;</span>
+            <h2 style="text-align: center;">Đăng ký thanh toán tự động</h2>
+            <form>
+                <label for="name">Tên người thanh toán:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="typeCheckOut">Khoản thanh toán</label>
+                <select name="typeCheckOut" id="typeCheckOut">
+                    <option value="lai">Tiền lãi</option>
+                    <option value="goc">Tiền gốc</option>
+                </select>
+
+                <label for="phone">Phone:</label>
+                <input type="phone" id="phone" name="phone" required>
+
+                <label for="account-number">Số tài khoản:</label>
+                <input type="number" id="account-number" name="account-number" required>
+
+                <label for="bank">Ngân hàng:</label>
+                <select id="bank" name="bank">
+                    <option value="bank1">Đầu tư và Phát triển Việt Nam - BIDV</option>
+                    <option value="bank2">Công Thương Việt Nam - VietinBank</option>
+                    <option value="bank3">Quân đội - MB</option>
+                    <option value="bank3">Kỹ Thương Việt Nam - Techcombank</option>
+                    <option value="bank3">Sài Gòn-Hà Nội - SHB</option>
+                    <option value="bank3">NH TMCP Phát triển Nhà Tp HCM - HDBank</option>
+                </select>
+
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+
+
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
         $(document).ready(function () {
+            //Format number 
+            function formatNumber(number) {
+                return number.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            }
+
             // Get date
             let date = new Date();
             let day = date.getDate();
@@ -472,7 +544,8 @@
 
                 // Lấy dữ liệu từ form
                 var budgetName = $("#budgetName").val();
-                var amount = $("#amount").val();
+                var amount = $(".budget-input").val();
+                amount = formatNumber(amount);
 
                 // Tạo một mục ngân sách mới
                 var newItem = `
@@ -499,14 +572,12 @@
 
 
 
-
-
-
             //Handle CRUD incom
             // Dữ liệu mẫu ban đầu
             var incomes = [
                 { name: 'Lương', date: '2024-06-01', amount: '5000000' },
-                { name: 'Thưởng', date: '2024-06-02', amount: '1000000' }
+                { name: 'Thưởng', date: '2024-06-02', amount: '1000000' },
+                { name: 'Kinh doanh quần áo', date: '2024-06-01', amount: '5000000' },
             ];
 
             // Hiển thị dữ liệu
@@ -524,6 +595,7 @@
                 var name = $("#name").val();
                 var date = $("#date").val();
                 var amount = $("#amount").val();
+
 
                 // Validate dữ liệu
                 if (name === "" || date === "" || amount === "") {
@@ -593,15 +665,17 @@
             //Handle expense
             // Dữ liệu mẫu ban đầu
             var expenses = [
-                { name: 'Mua thức ăn', date: '2024-06-01', type: 'Food', amount: '500000' },
-                { name: 'Chi phí di chuyển', date: '2024-06-02', type: 'Transport', amount: '200000' }
+                { name: 'Ăn lẩu', date: '2024-06-01', type: 'Ăn uống', amount: '500000' },
+                { name: 'Xăng xe', date: '2024-06-02', type: 'Xe cộ', amount: '200000' },
+                { name: 'Nhà trọ ', date: '2024-06-02', type: 'Tiền nhà', amount: '130000' },
+                { name: 'Ăn uống', date: '2024-06-02', type: 'Cafe với bạn bè', amount: '450000' },
             ];
 
             // Hiển thị dữ liệu
             function displayExpenses() {
                 $("#expense-table-body").empty();
                 $.each(expenses, function (index, expense) {
-                    $("#expense-table-body").append("<tr><td>" + expense.name + "</td><td>" + expense.date + "</td><td>" + expense.type + "</td><td>" + expense.amount + "</td><td><button class='edit-expense-btn' data-index='" + index + "'>Sửa</button><button class='delete-expense-btn' data-index='" + index + "'>Xóa</button></td></tr>");
+                    $("#expense-table-body").append("<tr><td>" + expense.name + "</td><td>" + expense.date + "</td><td>" + expense.type + "</td><td>" + expense.amount + "</td><td><button class='edit-expense-btn' data-index='" + index + "'>Sửa</button><button class='delete-expense-btn' data-index='" + index + "'>Xóa</button><button class='restore-expense-btn' data-index='" + index + "'>Khôi phục</button></td></tr>");
                 });
             }
 
@@ -682,6 +756,238 @@
                     displayExpenses();
                 }
             });
+
+            // Khôi phục chi phí
+            $(document).on("click", ".restore-expense-btn", function () {
+                if (confirm("Xác nhận khôi phục khoản tiền này?")) {
+                    var index = $(this).data("index");
+                    expenses.splice(index, 1);
+                    displayExpenses();
+                }
+            });
+
+
+            //Handle loan amount
+            // Dữ liệu mẫu ban đầu
+            var loans = [
+                { name: 'Vay mua xe', dateBorrowed: '2024-06-01', dueDate: '2024-12-01', amount: '10000000', interest: '6' },
+                { name: 'Vay đầu tư coin', dateBorrowed: '2024-06-02', dueDate: '2025-06-02', amount: '5000000', interest: '6' }
+            ];
+
+            // Hiển thị dữ liệu
+            function displayLoans() {
+                $("#loan-table-body").empty();
+                $.each(loans, function (index, loan) {
+                    var daysRemaining = Math.ceil((new Date(loan.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
+                    $("#loan-table-body").append("<tr><td>" + loan.name + "</td><td>" + loan.amount + "</td><td>" + loan.dateBorrowed + "</td><td>" + loan.dueDate + "</td><td>" + daysRemaining + "</td><td>" + loan.interest + "</td><td><button class='edit-loan-btn' data-index='" + index + "'>Sửa</button><button class='delete-loan-btn' data-index='" + index + "'>Xóa</button></td></tr>");
+                });
+            }
+
+            displayLoans();
+
+            // Thêm khoản vay mới
+            $("#add-loan-btn").click(function () {
+                var name = $("#loan-name").val();
+                var amount = $("#loan-amount").val();
+                var dateBorrowed = $("#loan-date-borrowed").val();
+                var dueDate = $("#loan-due-date").val();
+                var interest = $("#loan-interest").val();
+
+                // Validate dữ liệu
+                if (name === "" || amount === "" || dateBorrowed === "" || dueDate === "" || interest === "") {
+                    alert("Vui lòng nhập đủ thông tin.");
+                    return;
+                }
+
+                // Thêm vào mảng và hiển thị lại
+                loans.push({ name: name, amount: amount, dateBorrowed: dateBorrowed, dueDate: dueDate, interest: interest });
+                displayLoans();
+
+                // Xóa nội dung của các trường nhập
+                $("#loan-name").val("");
+                $("#loan-amount").val("");
+                $("#loan-date-borrowed").val("");
+                $("#loan-due-date").val("");
+                $("#loan-interest").val("");
+            });
+
+            // Sửa khoản vay
+            $(document).on("click", ".edit-loan-btn", function () {
+                var index = $(this).data("index");
+                var loan = loans[index];
+
+                // Hiển thị dữ liệu trên form nhập
+                $("#loan-name").val(loan.name);
+                $("#loan-amount").val(loan.amount);
+                $("#loan-date-borrowed").val(loan.dateBorrowed);
+                $("#loan-due-date").val(loan.dueDate);
+                $("#loan-interest").val(loan.interest);
+
+                // Ẩn nút Thêm và hiển thị nút Cập nhật
+                $("#add-loan-btn").hide();
+                $("#update-loan-btn").remove();
+                $(".loan-amount-form").append("<button id='update-loan-btn'>Cập nhật</button>");
+
+                // Xử lý sự kiện khi nhấn nút Cập nhật
+                $("#update-loan-btn").click(function () {
+                    var name = $("#loan-name").val();
+                    var amount = $("#loan-amount").val();
+                    var dateBorrowed = $("#loan-date-borrowed").val();
+                    var dueDate = $("#loan-due-date").val();
+                    var interest = $("#loan-interest").val();
+
+                    // Validate dữ liệu
+                    if (name === "" || amount === "" || dateBorrowed === "" || dueDate === "" || interest === "") {
+                        alert("Vui lòng nhập đủ thông tin.");
+                        return;
+                    }
+
+                    // Cập nhật dữ liệu và hiển thị lại
+                    loans[index] = { name: name, amount: amount, dateBorrowed: dateBorrowed, dueDate: dueDate, interest: interest };
+                    displayLoans();
+
+                    // Xóa nội dung của các trường nhập và hiển thị lại nút Thêm
+                    $("#loan-name").val("");
+                    $("#loan-amount").val("");
+                    $("#loan-date-borrowed").val("");
+                    $("#loan-due-date").val("");
+                    $("#loan-interest").val("");
+                    $("#add-loan-btn").show();
+                    $("#update-loan-btn").remove();
+                });
+            });
+
+            // Xóa khoản vay
+            $(document).on("click", ".delete-loan-btn", function () {
+                if (confirm("Bạn có chắc chắn muốn xóa khoản vay này không?")) {
+                    var index = $(this).data("index");
+                    loans.splice(index, 1);
+                    displayLoans();
+                }
+            });
+
+
+            //Handle modal
+            var modal = $('#paymentModal');
+            var btn = $('.link-account-finance');
+            var span = $('.close');
+
+            btn.click(function () {
+                modal.show(500);
+            });
+
+            span.click(function () {
+                modal.hide();
+            });
+
+            $(window).click(function (event) {
+                if (event.target.id == 'paymentModal') {
+                    modal.hide();
+                }
+            });
+
+
+
+            //Handle target
+            // Dữ liệu mẫu ban đầu
+            var goals = [
+                { name: 'Mua xe', date: '2024-06-01', amount: '300000000', currentPrice: '100000000', progress: '30%' },
+                { name: 'Mua nhà', date: '2024-06-02', amount: '2000000000', currentPrice: '500000000', progress: '25%' },
+            ];
+
+            // Hiển thị dữ liệu
+            function displayGoals() {
+                $("#goal-table-body").empty();
+                $.each(goals, function (index, goal) {
+                    $("#goal-table-body").append("<tr><td>" + goal.name + "</td><td>" + goal.date + "</td><td>" + goal.amount + "</td><td>" + goal.currentPrice + "</td><td>" + goal.progress + "</td><td><button class='edit-goal-btn' data-index='" + index + "'>Sửa</button><button class='delete-goal-btn' data-index='" + index + "'>Xóa</button></td></tr>");
+                });
+            }
+
+            displayGoals();
+
+            // Thêm mục tiêu mới
+            $("#add-goal-btn").click(function () {
+                var name = $("#goal-name").val();
+                var date = $("#goal-date").val();
+                var amount = $("#goal-amount").val();
+                var currentPrice = $("#goal-current-price").val();
+                var progress = $("#goal-progress").val();
+
+                // Validate dữ liệu
+                if (name === "" || date === "" || amount === "" || currentPrice === "" || progress === "") {
+                    alert("Vui lòng nhập đủ thông tin.");
+                    return;
+                }
+
+                // Thêm vào mảng và hiển thị lại
+                goals.push({ name: name, date: date, amount: amount, currentPrice: currentPrice, progress: progress });
+                displayGoals();
+
+                // Xóa nội dung của các trường nhập
+                $("#goal-name").val("");
+                $("#goal-date").val("");
+                $("#goal-amount").val("");
+                $("#goal-current-price").val("");
+                $("#goal-progress").val("");
+            });
+
+            // Sửa mục tiêu
+            $(document).on("click", ".edit-goal-btn", function () {
+                var index = $(this).data("index");
+                var goal = goals[index];
+
+                // Hiển thị dữ liệu trên form nhập
+                $("#goal-name").val(goal.name);
+                $("#goal-date").val(goal.date);
+                $("#goal-amount").val(goal.amount);
+                $("#goal-current-price").val(goal.currentPrice);
+                $("#goal-progress").val(goal.progress);
+
+                // Ẩn nút Thêm và hiển thị nút Cập nhật
+                $("#add-goal-btn").hide();
+                $("#update-goal-btn").remove();
+                $(".goal-form").append("<button id='update-goal-btn'>Cập nhật</button>");
+
+                // Xử lý sự kiện khi nhấn nút Cập nhật
+                $("#update-goal-btn").click(function () {
+                    var name = $("#goal-name").val();
+                    var date = $("#goal-date").val();
+                    var amount = $("#goal-amount").val();
+                    var currentPrice = $("#goal-current-price").val();
+                    var progress = $("#goal-progress").val();
+
+                    // Validate dữ liệu
+                    if (name === "" || date === "" || amount === "" || currentPrice === "" || progress === "") {
+                        alert("Vui lòng nhập đủ thông tin.");
+                        return;
+                    }
+
+                    // Cập nhật dữ liệu và hiển thị lại
+                    goals[index] = { name: name, date: date, amount: amount, currentPrice: currentPrice, progress: progress };
+                    displayGoals();
+
+                    // Xóa nội dung của các trường nhập và hiển thị lại nút Thêm
+                    $("#goal-name").val("");
+                    $("#goal-date").val("");
+                    $("#goal-amount").val("");
+                    $("#goal-current-price").val("");
+                    $("#goal-progress").val("");
+                    $("#add-goal-btn").show();
+                    $("#update-goal-btn").remove();
+                });
+            });
+
+            // Xóa mục tiêu
+            $(document).on("click", ".delete-goal-btn", function () {
+                if (confirm("Bạn có chắc chắn muốn xóa mục này không?")) {
+                    var index = $(this).data("index");
+                    goals.splice(index, 1);
+                    displayGoals();
+                }
+            });
+
+
+
 
         })
     </script>
