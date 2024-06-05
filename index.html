@@ -60,7 +60,7 @@
                     <li data-num="1" class="list-group-item list-item-control active">Bảng điều khiển</li>
                     <li data-num="2" class="list-group-item list-item-control">Khoản thu</li>
                     <li data-num="3" class="list-group-item list-item-control">Khoản chi</li>
-                    <li data-num="4" class="list-group-item list-item-control">Khoản vay</li>
+                    <li data-num="4" class="list-group-item list-item-control">Khoản đi vay</li>
                     <li data-num="5" class="list-group-item list-item-control">Mục tiêu</li>
                 </ul>
                 <section class="slider">
@@ -83,57 +83,12 @@
             </div>
             <div class="col-9">
                 <section data-num="1" class="content-item content-item-active">
+                    <div class="row">
+                        <h5 style="padding: 0;">Tổng thu nhập: 20.000.00 VND</h5>
+                        <button id="create-wallet" style="width: 120px; margin-top: 10px;; margin-bottom: 20px;"
+                            class="btn btn-success">Tạo ví</button>
+                    </div>
                     <div class="row list-card">
-                        <!-- Dữ liệu mẫu giao dịch -->
-                        <div class="col-3">
-                            <div class="card">
-                                <section style="background-color: #009D55;" class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div style="background-image: linear-gradient(to right, #00C76C, #00A95B);"
-                                    class="card-body">
-                                    <h5 class="card-title">Thu nhập</h5>
-                                    <p style="margin: 0;">Tháng này: 10.000.000 VND </p>
-                                    <p style="margin: 0;">Tổng dư hiện tại: 20.000.000 VND</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <section class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div class="card-body">
-                                    <h5 class="card-title">Tài khoản ví Tiết kiệm</h5>
-                                    <p class="card-text">24.000.000 VND</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <section style="background-color: #005F97;" class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div style="background-image: linear-gradient(to right, #0088DA, #0074B9);"
-                                    class="card-body">
-                                    <h5 class="card-title">Tài khoản ví Giáo dục</h5>
-                                    <p class="card-text">18.000.000 VND</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <section style="background-color: #951144;" class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div style="background-image: linear-gradient(to right, #CB196D, #B91560);"
-                                    class="card-body">
-                                    <h5 class="card-title">Tài khoản ví Mục tiêu</h5>
-                                    <p class="card-text">30.000.000 VND</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Thêm thẻ cho các danh mục khác -->
                     </div>
                     <div class="row">
                         <div class="col-6">
@@ -235,8 +190,39 @@
                         <input type="text" id="name" placeholder="Tên thu nhập">
                         <input type="date" id="date">
                         <input type="number" id="amount" placeholder="Số tiền">
+                        <select name="typeIncom" id="typeIncom">
+                            <option value="coding">Cố định</option>
+                            <option value="lamthem">Làm thêm</option>
+                        </select>
                         <button id="add-btn">Thêm</button>
                     </div>
+
+                    <div style="margin-bottom: 10px;" class="filter-form">
+                        <label for="month-filter">Chọn tháng:</label>
+                        <select id="month-filter">
+                            <option value="">Tất cả</option>
+                            <option value="1">Tháng 1</option>
+                            <option value="2">Tháng 2</option>
+                            <option value="3">Tháng 3</option>
+                            <option value="4">Tháng 4</option>
+                            <option value="5">Tháng 5</option>
+                            <option value="6">Tháng 6</option>
+                            <option value="7">Tháng 7</option>
+                            <option value="8">Tháng 8</option>
+                            <option value="9">Tháng 9</option>
+                            <option value="10">Tháng 10</option>
+                            <option value="11">Tháng 11</option>
+                            <option value="12">Tháng 12</option>
+                        </select>
+                    </div>
+
+                    <label for="year-filter">Chọn năm:</label>
+                    <select style="margin-left: 10px; width: 90px; margin-bottom: 10px;" id="year-filter">
+                        <option value="">Tất cả</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
 
                     <table>
                         <thead>
@@ -244,7 +230,8 @@
                                 <th>Tên thu nhập</th>
                                 <th>Ngày</th>
                                 <th>Số tiền</th>
-                                <th>Actions</th>
+                                <th>Loại thu nhập</th>
+                                <th>Hoạt động</th>
                             </tr>
                         </thead>
                         <tbody id="income-table-body"></tbody>
@@ -252,42 +239,7 @@
                 </section>
                 <section data-num="3" class="content-item">
                     <div class="row list-item-budget">
-                        <div class="col-3">
-                            <div div class="card">
-                                <section class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div class="card-body">
-                                    <h5 class="card-title">Ăn uống</h5>
-                                    <p class="card-text">3.000.000 VND</p>
-                                </div>
 
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <section class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div class="card-body">
-                                    <h5 class="card-title">Xe cộ</h5>
-                                    <p class="card-text">500.000 VND</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <section class="card-icon">
-                                    <i class="fa-solid fa-money-check-dollar"></i>
-                                </section>
-                                <div class="card-body">
-                                    <h5 class="card-title">Tiền nhà</h5>
-                                    <p class="card-text">4.000.000 VND</p>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                     <div class="form-container">
                         <h2 class="form-title">Ngân sách tự chi/tháng</h2>
@@ -300,7 +252,14 @@
                                 <label for="amount" class="form-label">Số tiền:</label>
                                 <input type="number" id="amount" name="amount" class="form-input budget-input" required>
                             </div>
-                            <input type="submit" value="Tạo ngân sách" class="form-submit">
+                            <div class="form-group">
+                                <select style="padding: 5px 10px;" name="vi" id="vi">
+                                    <option value="sh">Ví Sinh hoạt</option>
+                                    <option value="tk">Ví Tiết kiệm</option>
+                                    <option value="dt">Ví Đầu tư</option>
+                                </select>
+                            </div>
+                            <input id="budget-create" type="submit" value="Tạo ngân sách" class="form-submit">
                         </form>
                     </div>
 
@@ -309,7 +268,6 @@
                             <input type="text" id="expense-name" placeholder="Tên chi phí">
                             <input type="date" id="expense-date">
                             <select id="expense-type">
-                                <option value="Food">Ví Tổng thu nhập</option>
                                 <option value="Transport">Ví Tiết kiệm</option>
                                 <option value="Others">Ví Giáo dục</option>
                                 <option value="Utilities">Ví Mục tiêu</option>
@@ -360,8 +318,10 @@
                     </table>
 
                     <button class="link-account-finance" style="margin-top: 10px; background-color: aqua;">Liên kết ngân
-                        hàng, thanh toán tự
-                        động</button>
+                        hàng, thanh toán tự động</button>
+                    <span><i>(*Khi bạn thanh toán tiền gốc hoặc lãi qua tài khoản ngân hàng, hệ thống sẽ tính toán lại
+                            tiền gốc và
+                            lãi)</i></span>
                 </section>
                 <section data-num="5" class="content-item">
                     <div class="goal-form">
@@ -397,7 +357,7 @@
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <span style="text-align: right;" class="close">&times;</span>
-            <h2 style="text-align: center;">Đăng ký thanh toán tự động</h2>
+            <h2 style="text-align: center;">Thanh toán tự động</h2>
             <form>
                 <label for="name">Tên người thanh toán:</label>
                 <input type="text" id="name" name="name" required>
@@ -429,6 +389,32 @@
         </div>
     </div>
 
+    <!-- Modal create wallet -->
+    <div class="modal" id="wallet-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div style="display: flex; justify-content: space-between;" class="modal-header">
+                    <h5 class="modal-title">Tạo ví mới</h5>
+                    <span style="font-size: 30px; text-align: right; cursor: pointer;">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="wallet-name">Tên ví:</label>
+                            <input type="text" class="form-control" id="wallet-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="wallet-amount">Số tiền:</label>
+                            <input type="number" class="form-control" id="wallet-amount">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-save">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -496,6 +482,7 @@
                 "car_2.jpg",
                 "car_3.png",
             ];
+
             const advertisementData = localStorage.getItem("ads");
             if (advertisementData) {
                 const advertisement = JSON.parse(advertisementData);
@@ -538,6 +525,121 @@
             }
 
 
+            //Handle create wallet
+            $("#create-wallet").click(function () {
+                $("#wallet-name").val('');
+                $("#wallet-amount").val('');
+                $("#wallet-modal").show();
+            });
+
+            $(".btn-save").click(function () {
+                // Lấy giá trị từ các trường nhập liệu
+                var walletName = $("#wallet-name").val();
+                var walletAmount = $("#wallet-amount").val();
+
+                // Kiểm tra xem các trường nhập liệu có rỗng không
+                if (walletName.trim() === "" || walletAmount.trim() === "") {
+                    alert("Vui lòng điền đầy đủ thông tin ví.");
+                    return; // Dừng hàm nếu có lỗi
+                }
+
+                // Kiểm tra xem số tiền có phải là số không
+                if (isNaN(walletAmount)) {
+                    alert("Số tiền phải là một số.");
+                    return; // Dừng hàm nếu có lỗi
+                }
+
+                // Tiếp tục quá trình lưu nếu không có lỗi
+
+                // Mảng chứa các màu nền
+                var backgroundColors = ['#005F97', '#0088DA', '#0074B9', '#FF5733', '#FFC300', '#DA627D', '#4CAF50', '#2196F3', '#9C27B0'];
+
+                // Mảng chứa các màu chữ
+                var textColors = ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#000000', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'];
+
+                // Chọn một màu nền ngẫu nhiên từ mảng backgroundColors
+                var randomBackgroundColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+
+                // Chọn một màu chữ tương ứng
+                var textColor = textColors[backgroundColors.indexOf(randomBackgroundColor)];
+
+                // Tạo thẻ ví mới với màu ngẫu nhiên
+                var newWalletCard = '<div class="col-3">' +
+                    '<div class="card">' +
+                    '<section style="background-color: ' + randomBackgroundColor + '; color: ' + textColor + ';" class="card-icon">' +
+                    '<i class="fa-solid fa-money-check-dollar"></i>' +
+                    '</section>' +
+                    '<div style="background-image: linear-gradient(to right, ' + randomBackgroundColor + ', #0074B9);" class="card-body">' +
+                    '<div class="card-title">' + walletName + '</div>' +
+                    '<p class="card-text">' + walletAmount + ' VND</p>' +
+                    '<button class="btn-edit">Chỉnh sửa</button><button class="btn-delete">Xóa</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+
+                // Thêm thẻ ví mới vào giao diện
+                $(".list-card").append(newWalletCard);
+
+                // Ẩn modal sau khi tạo ví
+                $("#wallet-modal").hide();
+            });
+
+            $("#wallet-modal").click(function (event) {
+                if (event.target.id == "wallet-modal") {
+                    $("#wallet-modal").hide();
+                }
+            });
+
+            $(".modal-header span").click(function () {
+                $("#wallet-modal").hide();
+            });
+
+            $(document).on("click", ".btn-delete", function () {
+                // Xác nhận xóa
+                if (confirm("Bạn có chắc muốn xóa ví này không?")) {
+                    // Xóa thẻ ví
+                    $(this).closest(".col-3").remove();
+                }
+            });
+
+            $(document).on("click", ".btn-edit", function () {
+                // Lấy thông tin về ví mà bạn muốn chỉnh sửa
+                var walletCard = $(this).closest(".card");
+                var walletName = walletCard.find(".card-title");
+                var walletAmount = walletCard.find(".card-text");
+
+                // Hiển thị các trường nhập liệu để chỉnh sửa trực tiếp
+                walletName.attr('contenteditable', 'true').addClass('editable');
+                walletAmount.attr('contenteditable', 'true').addClass('editable');
+
+                // Thay đổi văn bản nút "Chỉnh sửa" thành "Cập nhật"
+                $(this).text("Cập nhật").addClass("btn-update").removeClass("btn-edit");
+
+                // Ẩn nút "Xóa" trong quá trình chỉnh sửa
+                walletCard.find(".btn-delete").hide();
+
+                // Tự động focus vào trường nhập liệu đầu tiên
+                walletName.focus();
+            });
+
+            $(document).on("click", ".btn-update", function () {
+                // Lấy thông tin ví đã chỉnh sửa
+                var walletCard = $(this).closest(".card");
+                var walletNameText = walletCard.find(".card-title").text();
+                var walletAmountText = walletCard.find(".card-text").text();
+
+                // Hiển thị lại nút "Xóa"
+                walletCard.find(".btn-delete").show();
+
+                // Cập nhật thông tin ví và văn bản nút "Chỉnh sửa"
+                $(this).text("Chỉnh sửa").addClass("btn-edit").removeClass("btn-update");
+                walletCard.find(".card-title").attr('contenteditable', 'false').removeClass('editable').text(walletNameText);
+                walletCard.find(".card-text").attr('contenteditable', 'false').removeClass('editable').text(walletAmountText);
+            });
+
+
+
+
             //Handle create budget
             $("#budgetForm").submit(function (event) {
                 event.preventDefault();
@@ -545,7 +647,7 @@
                 // Lấy dữ liệu từ form
                 var budgetName = $("#budgetName").val();
                 var amount = $(".budget-input").val();
-                amount = formatNumber(amount);
+                var typeVi = $("#vi option:selected").text();
 
                 // Tạo một mục ngân sách mới
                 var newItem = `
@@ -555,8 +657,13 @@
                         <i class="fa-solid fa-money-check-dollar"></i>
                     </section>
                     <div class="card-body">
-                        <h5 class="card-title">${budgetName}</h5>
-                        <p class="card-text">${amount} VND</p>
+                        <h4 class="card-title">${budgetName}</h4>
+                        <span class="card-text">${amount} VND</span>
+                        <br/>
+                        <span>${typeVi}</span>
+                        <br/>
+                        <button class="btn btn-primary budget-edit">Sửa</button>
+                        <button class="btn btn-danger budget-remove">Xóa</button>
                     </div>
                 </div>
             </div>
@@ -569,22 +676,90 @@
                 $("#budgetForm")[0].reset();
             });
 
+            // Xử lý sự kiện khi click vào nút "Xóa"
+            $(document).on("click", ".budget-remove", function () {
+                var confirmDelete = confirm("Bạn có chắc chắn muốn xóa mục ngân sách này không?");
+                if (confirmDelete) {
+                    $(this).closest(".col-3").remove(); // Xóa phần tử cha chứa nút "Xóa" được click
+                }
+            });
+
+            var _this;
+
+
+
+            // Xử lý sự kiện khi click vào nút "Sửa"
+            $(document).on("click", ".budget-edit", function () {
+                var $cardBody = $(this).closest(".card-body");
+                var $editButton = $(this);
+                _this = $(this);
+
+                // Lấy dữ liệu hiện tại từ mục ngân sách
+                var budgetName = $cardBody.find(".card-title").text().trim();
+                var amount = $cardBody.find(".card-text").text().trim();
+                var typeVi = $cardBody.find("span").last().text().trim();
+
+                // Hiển thị dữ liệu lên form
+                $("#budgetName").val(budgetName);
+                $(".budget-input").val(amount);
+                $("#vi").val(typeVi);
+
+                // Ẩn nút "Tạo ngân sách" và hiển thị nút "Cập nhật"
+
+                $("#budgetForm .form-submit").hide();
+                if (!$cardBody.find(".budget-update").length) {
+                    $editButton.after('<button style="margin-left: 5px" class="btn btn-success budget-update">Cập nhật</button>');
+                }
+            });
+
+            // Xử lý sự kiện khi click vào nút "Cập nhật"
+            $(document).on("click", ".budget-update", function () {
+                var $cardBody = $(this).closest(".card-body");
+                var budgetName = $("#budgetName").val();
+                var amount = $(".budget-input").val();
+                var typeVi = $("#vi option:selected").text();
+                amount = formatNumber(amount);
+
+                // Cập nhật dữ liệu mục ngân sách
+                $cardBody.find(".card-title").text(budgetName);
+                $cardBody.find(".card-text").text(amount + " VND");
+                $cardBody.find("span").last().text(typeVi);
+
+                // Xóa nút "Cập nhật" và hiển thị lại nút "Tạo ngân sách"
+                $(this).remove();
+                $("#budgetForm .form-submit").show();
+
+                // Đặt lại form
+                $("#budgetForm")[0].reset();
+            });
+
+
+
+
 
 
 
             //Handle CRUD incom
             // Dữ liệu mẫu ban đầu
             var incomes = [
-                { name: 'Lương', date: '2024-06-01', amount: '5000000' },
-                { name: 'Thưởng', date: '2024-06-02', amount: '1000000' },
-                { name: 'Kinh doanh quần áo', date: '2024-06-01', amount: '5000000' },
+                { name: 'Lương', date: '2024-06-01', amount: '5000000', typeIncom: 'Cố định' },
+                { name: 'Thưởng', date: '2024-06-02', amount: '1000000', typeIncom: 'Làm thêm' },
+                { name: 'Kinh doanh quần áo', date: '2024-06-01', amount: '5000000', typeIncom: 'Làm thêm' },
             ];
 
             // Hiển thị dữ liệu
             function displayIncomes() {
+                var selectedMonth = $("#month-filter").val();
+                var selectedYear = $("#year-filter").val();
                 $("#income-table-body").empty();
                 $.each(incomes, function (index, income) {
-                    $("#income-table-body").append("<tr><td>" + income.name + "</td><td>" + income.date + "</td><td>" + income.amount + "</td><td><button class='edit-btn' data-index='" + index + "'>Sửa</button><button class='delete-btn' data-index='" + index + "'>Xóa</button></td></tr>");
+                    var incomeDate = new Date(income.date);
+                    var incomeMonth = incomeDate.getMonth() + 1;
+                    var incomeYear = incomeDate.getFullYear();
+                    if ((selectedMonth === "" || incomeMonth == selectedMonth) &&
+                        (selectedYear === "" || incomeYear == selectedYear)) {
+                        $("#income-table-body").append("<tr><td>" + income.name + "</td><td>" + income.date + "</td><td>" + income.amount + "</td><td>" + income.typeIncom + "</td><td><button class='edit-btn' data-index='" + index + "'>Sửa</button><button class='delete-btn' data-index='" + index + "'>Xóa</button></td></tr>");
+                    }
                 });
             }
 
@@ -595,7 +770,7 @@
                 var name = $("#name").val();
                 var date = $("#date").val();
                 var amount = $("#amount").val();
-
+                var typeIncom = $("#typeIncom").val();
 
                 // Validate dữ liệu
                 if (name === "" || date === "" || amount === "") {
@@ -604,13 +779,14 @@
                 }
 
                 // Thêm vào mảng và hiển thị lại
-                incomes.push({ name: name, date: date, amount: amount });
+                incomes.push({ name: name, date: date, amount: amount, typeIncom: typeIncom });
                 displayIncomes();
 
                 // Xóa nội dung của các trường nhập
                 $("#name").val("");
                 $("#date").val("");
                 $("#amount").val("");
+                $("#typeIncom").val("coding");
             });
 
             // Sửa thu nhập
@@ -622,6 +798,7 @@
                 $("#name").val(income.name);
                 $("#date").val(income.date);
                 $("#amount").val(income.amount);
+                $("#typeIncom").val(income.typeIncom === 'Cố định' ? 'coding' : 'lamthem');
 
                 // Ẩn nút Thêm và hiển thị nút Cập nhật
                 $("#add-btn").hide();
@@ -633,6 +810,7 @@
                     var name = $("#name").val();
                     var date = $("#date").val();
                     var amount = $("#amount").val();
+                    var typeIncom = $("#typeIncom").val();
 
                     // Validate dữ liệu
                     if (name === "" || date === "" || amount === "") {
@@ -641,13 +819,14 @@
                     }
 
                     // Cập nhật dữ liệu và hiển thị lại
-                    incomes[index] = { name: name, date: date, amount: amount };
+                    incomes[index] = { name: name, date: date, amount: amount, typeIncom: typeIncom === 'coding' ? 'Cố định' : 'Làm thêm' };
                     displayIncomes();
 
                     // Xóa nội dung của các trường nhập và hiển thị lại nút Thêm
                     $("#name").val("");
                     $("#date").val("");
                     $("#amount").val("");
+                    $("#typeIncom").val("coding");
                     $("#add-btn").show();
                     $("#update-btn").remove();
                 });
@@ -660,6 +839,11 @@
                     incomes.splice(index, 1);
                     displayIncomes();
                 }
+            });
+
+            // Lọc theo tháng và năm
+            $("#month-filter, #year-filter").change(function () {
+                displayIncomes();
             });
 
             //Handle expense

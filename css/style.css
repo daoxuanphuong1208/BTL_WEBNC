@@ -34,7 +34,7 @@ a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 150px;
+    height: 200px;
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
@@ -266,6 +266,7 @@ th {
 }
 
 .income-form input,
+#typeIncom,
 #expense-type {
     margin-right: 10px;
     padding: 5px;
@@ -284,7 +285,8 @@ th {
 }
 
 #add-btn,
-#update-btn {
+#update-btn,
+.btn-update {
     background-color: #4CAF50;
 }
 
@@ -524,4 +526,63 @@ th {
     border: none;
     cursor: pointer;
     width: 100%;
+}
+
+
+/* Modal wallet */
+/* CSS */
+#wallet-modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(140, 143, 145, 0.4);
+    /* Màu xanh */
+}
+
+.modal-dialog {
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: none;
+    /* Loại bỏ đường viền dưới tiêu đề */
+}
+
+.modal-body {
+    padding-bottom: 0;
+    /* Loại bỏ padding dưới phần thân modal */
+}
+
+.btn-save {
+    width: 100%;
+    /* Nút lưu chiếm toàn bộ chiều rộng */
+}
+
+.btn-edit,
+.budget-edit {
+    padding: 3px 5px;
+    border-radius: 4px;
+    border: none;
+    background-color: #3c8dbc;
+}
+
+.btn-delete,
+.budget-remove {
+    margin-left: 5px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    border: none;
+    background-color: red;
 }
